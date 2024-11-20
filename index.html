@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catarsis</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .textarea {
+            width: 100%;
+            height: 100px;
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .hidden {
+            display: none;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Catarsis</h1>
+    <div id="content1">
+        <p>Un espacio para liberar, conectar y sanar.</p>
+        <p>En un mundo que a veces puede parecer demasiado hostil, especialmente para quienes formamos parte de la comunidad LGBTIQ+, aquí te ofrecemos un lugar donde puedas sentirte escuchadx. Un refugio para liberar lo que llevas dentro, un espacio seguro donde tus palabras tienen peso. Lo que sientes importa.</p>
+        <button class="button" onclick="showContent(2)">Siguiente</button>
+    </div>
+    <div id="content2" class="hidden">
+        <p>A veces la respuesta no está en una solución única, pero sí en una guía para poder sentirnos mejor. Hace cinco años no podía más y no confiaba en nada para sostenerme. Sin embargo, al estar al borde, hubo quienes me agarraron a tiempo. Una comunidad queer, rara, diferente que me hizo saber que no estaba solx. ¿Dónde están? En todas partes. Mira a tu alrededor, hay más como tú.</p>
+        <button class="button" onclick="showContent(3)">Siguiente</button>
+    </div>
+    <div id="content3" class="hidden">
+        <p>Sin embargo, todo se trata de circunstancias y esa fue la suerte que tuve. Sé lo que se siente no encajar, que tu cuerpo ni identidad sean normativas. Pero te juro que hay demasiados espacios a los que acercarte, donde encontrar ayuda psicológica, apoyo.</p>
+        <button class="button" onclick="showContent(4)">Siguiente</button>
+    </div>
+    <div id="content4" class="hidden">
+        <p>Puede que hoy quieras tomar una decisión diferente. Espero que este mensaje sea de ayuda.</p>
+        <button class="button" onclick="showContent(5)">Siguiente</button>
+    </div>
+    <div id="content5" class="hidden">
+        <p>Tal vez todo puede empezar contando algo, soltando un mensaje al aire. Escribe algo, si quieres. Lo que quieras, a quien quieras, solo déjalo fluir.</p>
+        <textarea id="userMessage" class="textarea" placeholder="Escribe aquí..."></textarea>
+        <button class="button" onclick="sendMessage()">Enviar</button>
+    </div>
+    <div id="thankYouMessage" class="hidden">
+        <p>Gracias por soltarlo. No dejes de contar cómo te sientes.</p>
+        <p><a href="https://www.reddit.com/r/catarsiskuirslw/s/1q0aGS63KT" target="_blank">Exprésate más en este espacio.</a></p>
+        <h2>Contactos de apoyo psicológico, grupos LGBTIQ+</h2>
+        <ul>
+            <li><a href="https://www.instagram.com/lxs.otrxs.morrxs?igsh=MTJlbGdncXEwYzRpeA==" target="_blank">Lxs otrxs morrxs</a></li>
+            <li><a href="https://www.instagram.com/red.arcoiris.resistencia?igsh=bGFncW40aHZveHd4" target="_blank">Red Arcoíris en Resistencia</a></li>
+            <li><a href="https://www.facebook.com/SaludMentalCoahuilaSSA" target="_blank">Salud Mental, Coahuila</a></li>
+            <li><a href="https://www.reddit.com/r/catarsiskuirslw/s/1q0aGS63KT" target="_blank">Catarsis en Reddit</a></li>
+        </ul>
+    </div>
+
+    <script>
+        function showContent(step) {
+            const currentContent = document.querySelector(`#content${step - 1}`);
+            const nextContent = document.querySelector(`#content${step}`);
+            if (currentContent) currentContent.classList.add("hidden");
+            if (nextContent) nextContent.classList.remove("hidden");
+        }
+
+        function sendMessage() {
+            const messageBox = document.getElementById("userMessage");
+            const thankYouMessage = document.getElementById("thankYouMessage");
+
+            if (messageBox.value.trim() !== "") {
+                document.getElementById("content5").classList.add("hidden");
+                thankYouMessage.classList.remove("hidden");
+            } else {
+                alert("Por favor, escribe algo antes de enviar.");
+            }
+        }
+    </script>
+</body>
+</html>
